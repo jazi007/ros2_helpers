@@ -1,0 +1,20 @@
+[package]
+name = "ros2_helpers"
+version = "0.1.0"
+authors = ["Nadhmi JAZI <nadhmi.eljazi@gmail.com>"]
+description = "A wrapper around safe drive"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/jazi007/ros2_helpers"
+
+
+[dependencies]
+futures = "0.3"
+log = "0.4"
+safe_drive = "0.4"
+tokio-stream = "0.1"
+tokio-util = "0.7"
+tokio = { version = "1", features = ["time"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }

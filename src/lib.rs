@@ -85,6 +85,7 @@
 pub mod common;
 pub mod clientserver;
 pub mod communicate;
+pub mod logger;
 pub mod pubsub;
 
 /// prelude module

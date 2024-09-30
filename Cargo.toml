@@ -1,6 +1,6 @@
 [package]
 name = "ros2_helpers"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Nadhmi JAZI <nadhmi.eljazi@gmail.com>"]
 description = "A wrapper around safe drive"
 edition = "2021"
@@ -10,7 +10,7 @@ repository = "https://github.com/jazi007/ros2_helpers"
 
 [dependencies]
 futures = "0.3"
-log = "0.4"
+log = { version = "0.4", features = ["std"] }
 safe_drive = "0.4"
 tokio-stream = "0.1"
 tokio-util = "0.7"

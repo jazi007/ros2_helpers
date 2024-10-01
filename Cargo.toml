@@ -1,6 +1,6 @@
 [package]
 name = "ros2_helpers"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Nadhmi JAZI <nadhmi.eljazi@gmail.com>"]
 description = "A wrapper around safe drive"
 edition = "2021"

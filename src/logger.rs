@@ -7,16 +7,12 @@ use std::sync::Arc;
 
 use log::{Level, Metadata, Record};
 
-struct Logger {
-    logger: Arc<SdLogger>,
-}
+struct Logger(Arc<SdLogger>);
 
 impl Logger {
-    /// [LsLogger] constructor
+    /// [Logger] constructor
     fn new(name: &str) -> Self {
-        Self {
-            logger: Arc::new(SdLogger::new(name)),
-        }
+        Self(Arc::new(SdLogger::new(name)))
     }
 
     /// init
@@ -31,19 +27,17 @@ impl Log for Logger {
     fn enabled(&self, metadata: &Metadata) -> bool {
         metadata.level() <= Level::Trace
     }
-
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
             match record.level() {
-                Level::Trace => pr_debug!(self.logger, "{}", record.args()),
-                Level::Debug => pr_debug!(self.logger, "{}", record.args()),
-                Level::Info => pr_info!(self.logger, "{}", record.args()),
-                Level::Warn => pr_warn!(self.logger, "{}", record.args()),
-                Level::Error => pr_error!(self.logger, "{}", record.args()),
+                Level::Trace => pr_debug!(self.0, "{}", record.args()),
+                Level::Debug => pr_debug!(self.0, "{}", record.args()),
+                Level::Info => pr_info!(self.0, "{}", record.args()),
+                Level::Warn => pr_warn!(self.0, "{}", record.args()),
+                Level::Error => pr_error!(self.0, "{}", record.args()),
             }
         }
     }
-
     fn flush(&self) {}
 }
 

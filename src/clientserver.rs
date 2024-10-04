@@ -62,7 +62,7 @@ where
 #[allow(missing_debug_implementations)]
 pub struct Server<T>(pub(crate) Option<SdServer<T>>);
 pub(crate) type ServerCallback<T> =
-    Box<dyn FnMut(<T as ServiceMsg>::Request) -> <T as ServiceMsg>::Response>;
+    Box<dyn FnMut(<T as ServiceMsg>::Request) -> <T as ServiceMsg>::Response + Send>;
 
 impl<T: ServiceMsg> Server<T>
 where

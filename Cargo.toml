@@ -1,6 +1,6 @@
 [package]
 name = "ros2_helpers"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Nadhmi JAZI <nadhmi.eljazi@gmail.com>"]
 description = "A wrapper around safe drive"
 edition = "2021"
@@ -15,6 +15,7 @@ safe_drive = "0.4"
 tokio-stream = "0.1"
 tokio-util = "0.7"
 tokio = { version = "1", features = ["time"] }
+yaml-rust2 = "0.10"
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

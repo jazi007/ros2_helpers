@@ -52,7 +52,7 @@ pub fn create_qos(depth: usize) -> Profile {
         depth,
         history: HistoryPolicy::KeepLast,
         reliability: ReliabilityPolicy::Reliable,
-        durability: DurabilityPolicy::TransientLocal,
+        durability: DurabilityPolicy::Volatile,
         ..Profile::default()
     }
 }

@@ -2,7 +2,7 @@
 
 use crate::common::Result;
 use log::{debug, error, trace};
-use safe_drive::{
+use oxidros::{
     msg::ServiceMsg,
     service::{client::Client as SdClient, server::Server as SdServer},
 };

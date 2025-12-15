@@ -3,7 +3,7 @@
 use std::pin::Pin;
 
 use futures::Stream;
-use safe_drive::{
+use oxidros::{
     msg::TypeSupport,
     topic::{
         publisher::Publisher,

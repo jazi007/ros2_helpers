@@ -1,6 +1,6 @@
 //! A trait for simplifying cmmunication
 //!
-use safe_drive::{
+use oxidros::{
     msg::{ServiceMsg, TypeSupport},
     node::Node,
     topic::{publisher::Publisher, subscriber::Subscriber},

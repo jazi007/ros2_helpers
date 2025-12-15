@@ -1,7 +1,7 @@
 //! Common types used by all ROS nodes
 //!
 use futures::ready;
-use safe_drive::{
+use oxidros::{
     msg::TypeSupport,
     node::Node,
     qos::{
@@ -21,7 +21,7 @@ use tokio_util::sync::ReusableBoxFuture;
 pub type ArcNode = Arc<Node>;
 
 /// Re-export of safe drive DynError
-pub use safe_drive::error::DynError;
+pub use oxidros::error::DynError;
 /// Result Type for ROS2
 pub type Result<T> = std::result::Result<T, DynError>;
 /// Publisher attributes
@@ -94,6 +94,6 @@ impl<T: 'static + Send + TypeSupport> Stream for SubscriberStream<T> {
 
 /// Get ROS Time
 pub fn get_time_now() -> Result<Duration> {
-    let mut time = safe_drive::clock::Clock::new()?;
+    let mut time = oxidros::clock::Clock::new()?;
     Ok(Duration::from_nanos(time.get_now()?.try_into()?))
 }

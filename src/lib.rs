@@ -96,7 +96,7 @@ pub mod prelude {
     pub use crate::communicate::Communicate;
     pub use crate::pubsub::{Publish, Subscribe};
     pub use futures::{Stream, StreamExt};
-    pub use safe_drive::{
+    pub use oxidros::{
         context::Context,
         node::{Node, NodeOptions},
         topic::{
@@ -106,5 +106,5 @@ pub mod prelude {
     };
 }
 pub use futures;
-pub use safe_drive;
+pub use oxidros;
 pub use tokio_stream;

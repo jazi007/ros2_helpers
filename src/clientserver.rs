@@ -49,6 +49,35 @@ where
             };
         }
     }
+    /// Send a request with a timeout
+    pub async fn send_timeout(
+        &mut self,
+        data: &<T as ServiceMsg>::Request,
+        timeout: Duration,
+    ) -> Result<<T as ServiceMsg>::Response> {
+        let client = self.0.take();
+        let Some(client) = client else {
+            return Err("Client not yet added".into());
+        };
+        debug!("Request: {:?}", data);
+        let mut receiver = client.send(data)?.recv();
+        match time::timeout(timeout, &mut receiver).await {
+            Ok(Ok((c, response, header))) => {
+                trace!("Header: {header:?}");
+                debug!("Response: {:?}", response);
+                self.0 = Some(c);
+                Ok(response)
+            }
+            Ok(Err(e)) => {
+                self.0 = Some(receiver.give_up());
+                Err(e)
+            }
+            Err(e) => {
+                self.0 = Some(receiver.give_up());
+                Err(e.into())
+            }
+        }
+    }
 }
 
 /// RPC Server
